@@ -2,8 +2,6 @@
 
 DeckerPlus restricts which code pages are executable as a program runs. At each callsite, only the functions statically reachable from that call are mapped `PROT_READ|PROT_EXEC` — everything else stays `PROT_NONE`. An attacker exploiting a memory bug sees a much smaller ROP/JOP gadget surface as a result.
 
-> **Note:** This is not the complete codebase, and not all of it is my work. The baseline pass, runtime library, and linker script generator were written by other members of the team at Georgia Tech. My contributions were the function cloning and inlining extensions built on top of the baseline, and the evaluation infrastructure for the new application benchmarks. Evaluation scripts and benchmark-specific build infrastructure are not included here.
-
 ---
 
 ## Repository Layout
