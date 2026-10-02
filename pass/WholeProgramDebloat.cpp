@@ -29,7 +29,7 @@
 
 
 
-#define BOTTOM_UP_DISJOINT_SET // comment out to use sharjeel's alg.
+#define BOTTOM_UP_DISJOINT_SET 
 
 using namespace llvm;
 using namespace std;
@@ -593,7 +593,7 @@ void WholeProgramDebloat::instrument_loop(int func_id, Loop *loop)
         IRBuilder<> builder(TI);
         builder.CreateCall(debrt_protect_loop_func, ArgsV);
 
-        //Set of functions debloated within loop (Sharjeel)
+        //Set of functions debloated within loop 
         // cporter update: added check in case 0-element case matters
         if(loop_static_reachability[loop_id].size() > 0){
 #ifdef BOTTOM_UP_DISJOINT_SET
@@ -848,7 +848,7 @@ void WholeProgramDebloat::instrument_toplevel_func(Function *f, LoopInfo *LI)
                                 assert(0);
                             }
                         }
-                        // An example of set of functions that will be debloated (Sharjeel)
+                        // An example of set of functions that will be debloated
 #ifdef BOTTOM_UP_DISJOINT_SET
                         update_disjoint_sets(temp);
 #else
@@ -1134,7 +1134,7 @@ void WholeProgramDebloat::build_basic_structs(Module &M)
 #ifdef BOTTOM_UP_DISJOINT_SET
 void WholeProgramDebloat::update_disjoint_sets(set<Function *> &new_set)
 {
-    // sharjeel's approach is to do this in places:
+    // Do this in places:
     //   instrumented_sets.push_back(new_set)
     // then call this at the end of the pass:
     //   create_disjoint_sets()
@@ -1229,7 +1229,7 @@ void WholeProgramDebloat::update_disjoint_sets(set<Function *> &new_set)
 void WholeProgramDebloat::finalize_disjoint_sets(void)
 {
     // Set of functions that have addresses taken so we take their reachability
-    // and consider it as a set (Sharjeel)
+    // and consider it as a set
     errs() << "Finalizing disjoint sets\n";
     for(auto F : func_has_addr_taken)
     {
@@ -1243,7 +1243,7 @@ void WholeProgramDebloat::finalize_disjoint_sets(void)
 void WholeProgramDebloat::create_disjoint_sets(void)
 {
     errs() << "Creating disjoint sets\n";
-    // Set of functions that have addresses taken so we take their reachability and consider it as a set (Sharjeel)
+    // Set of functions that have addresses taken so we take their reachability and consider it as a set
     for(auto F : func_has_addr_taken)
     {
         set<Function *> temp;
