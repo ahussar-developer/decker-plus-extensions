@@ -126,7 +126,7 @@ Generated linker script for the `lbm` SPEC CPU 2017 benchmark.
 
 ## My Contributions
 
-This project was developed at Georgia Tech. The baseline system — pass, runtime, linker — was built by the team; I contributed the "Plus" part of DeckerPlus: the function cloning and inlining compiler extensions, and the evaluation on new application benchmarks beyond SPEC and coreutils.
+I contributed the "Plus" part of DeckerPlus: the function cloning and inlining compiler extensions, and the evaluation on new application benchmarks beyond SPEC and coreutils.
 
 **Function Cloning.** I designed and implemented this from scratch. The main work was identifying encompassed functions also called from non-loop sites, cloning each with its full transitive reachable subgraph, and wiring everything up correctly — non-loop callsites redirect to the clone, internal calls within the cloned subgraph call other clones. The data structures (reachability maps, adjacency lists, disjoint sets) all had to be extended to track clones as first-class entities. The edge case that made this hard: the same function can appear in multiple reachable subgraphs, each needing its own independent clone.
 
