@@ -1,0 +1,4 @@
+VERSION_1.0 {
+    global: debrt_init; debrt_destroy; debrt_protect_single; debrt_protect_single_end; debrt_protect_reachable; debrt_protect_reachable_end; debrt_protect_loop; debrt_protect_loop_end; debrt_protect_indirect; debrt_protect_indirect_end; debrt_protect_sink; debrt_protect_sink_end; debrt_trace;
+    local: *;
+};
